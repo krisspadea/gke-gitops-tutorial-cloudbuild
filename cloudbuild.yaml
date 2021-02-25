@@ -77,6 +77,8 @@ steps:
     git commit -m "Deploying image gcr.io/${PROJECT_ID}/hello-cloudbuild:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository hello-cloudbuild-app
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+    git config --global user.name krisspadea
+    git config --global user.email krisspadea@verizon.net
     git push origin candidate
 
 # [END cloudbuild-trigger-cd]
