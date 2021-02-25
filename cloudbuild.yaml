@@ -43,7 +43,7 @@ steps:
 
 # [START cloudbuild-trigger-cd]
 # This step clones the hello-cloudbuild-env repository
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/cloud-builders/git'
   id: Clone env repository
   entrypoint: /bin/sh
   args:
@@ -52,7 +52,7 @@ steps:
     git clone https://github.com/krisspadea/hello-cloudbuild-env.git && \
     cd hello-cloudbuild-env && \
     git checkout candidate && \
-    git config user.email krisspadea@verizon.net
+    git config user.email krisspadea
 
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -65,7 +65,7 @@ steps:
      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > hello-cloudbuild-env/kubernetes.yaml
 
 # This step pushes the manifest back to hello-cloudbuild-env
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/cloud-builders/git'
   id: Push manifest
   entrypoint: /bin/sh
   args:
