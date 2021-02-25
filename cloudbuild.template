@@ -93,14 +93,6 @@ steps:
     Built from commit ${COMMIT_SHA} of repository hello-cloudbuild-app
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
     git push origin candidate
-  - git@github.com:krisspadea/hello-cloudbuild-env
-  volumes:
-  - name: 'ssh'
-    path: /root/.ssh
-
-availableSecrets:
-  secretManager:
-  - versionName: projects/dev-infrastructure-228701/secrets/cloudbuild-github-secret/versions/latest
-    env: 'SSH_KEY'
+ 
 
 # [END cloudbuild-trigger-cd]
