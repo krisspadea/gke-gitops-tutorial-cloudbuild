@@ -67,18 +67,16 @@ steps:
 # This step pushes the manifest back to hello-cloudbuild-env
 - name: 'gcr.io/cloud-builders/git'
   id: Push manifest
-  entrypoint: /bin/sh
+  entrypoint: git
   args:
   - '-c'
   - |
     set -x && \
     cd hello-cloudbuild-env && \
-    git add kubernetes.yaml && \
-    git commit -m "Deploying image gcr.io/${PROJECT_ID}/hello-cloudbuild:${SHORT_SHA}
+    add kubernetes.yaml && \
+    commit -m "Deploying image gcr.io/${PROJECT_ID}/hello-cloudbuild:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository hello-cloudbuild-app
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
-    git config --global user.name krisspadea
-    git config --global user.email krisspadea@verizon.net
-    git push origin candidate
+    push origin candidate
 
 # [END cloudbuild-trigger-cd]
