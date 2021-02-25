@@ -100,7 +100,7 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/dev-infrastructure-228701/secrets/secret-name/versions/latest
+  - versionName: projects/dev-infrastructure-228701/secrets/cloudbuild-github-secret/versions/latest
     env: 'SSH_KEY'
 
 # [END cloudbuild-trigger-cd]
