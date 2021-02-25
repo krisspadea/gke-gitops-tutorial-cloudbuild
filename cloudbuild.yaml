@@ -49,10 +49,11 @@ steps:
   args:
   - '-c'
   - |
+    init && \
     clone https://github.com/krisspadea/hello-cloudbuild-env.git && \
     cd hello-cloudbuild-env && \
     checkout candidate && \
-    config user.email krisspadea
+    config user.email kris@krisspadea.com
 
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/gcloud'
